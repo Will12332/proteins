@@ -2,6 +2,7 @@
 ## It should not be edited by hand
 Prefix: final-year-proteins: <http://example.com/final-year-proteins#>
 Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: pattern: <http://www.w3id.org/ontolink/pattern.owl#>
 Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
@@ -19,12 +20,571 @@ Annotations:
 AnnotationProperty: <http://www.purl.org/ontolink/tawny#name>
 
     
+AnnotationProperty: pattern:facetvalue
+
+    
+AnnotationProperty: pattern:inpattern
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+AnnotationProperty: rdfs:label
+
+    
 Datatype: rdf:PlainLiteral
 
     
-Class: final-year-proteins:HelloWorld
+ObjectProperty: final-year-proteins:binds
 
     Annotations: 
-        <http://www.purl.org/ontolink/tawny#name> "HelloWorld"@en
+        <http://www.purl.org/ontolink/tawny#name> "binds"@en
     
     
+ObjectProperty: final-year-proteins:hasCellCycleStage
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "hasCellCycleStage"@en,
+        pattern:inpattern _:genid3,
+        rdfs:comment "What stage of the Cell Cycle they bind"@en
+    
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        final-year-proteins:Protein
+    
+    Range: 
+        final-year-proteins:CellCycleStage
+    
+    
+ObjectProperty: final-year-proteins:hasDNABinding
+
+    Annotations: 
+        pattern:inpattern _:genid2,
+        <http://www.purl.org/ontolink/tawny#name> "hasDNABinding"@en
+    
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        final-year-proteins:Protein
+    
+    Range: 
+        final-year-proteins:DNABinding
+    
+    
+ObjectProperty: final-year-proteins:hasEssentialness
+
+    Annotations: 
+        pattern:inpattern _:genid4,
+        <http://www.purl.org/ontolink/tawny#name> "hasEssentialness"@en
+    
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        final-year-proteins:Protein
+    
+    Range: 
+        final-year-proteins:Essentialness
+    
+    
+ObjectProperty: final-year-proteins:hasRole
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "hasRole"@en
+    
+    Domain: 
+        final-year-proteins:Protein
+    
+    Range: 
+        final-year-proteins:TestRole
+    
+    
+ObjectProperty: final-year-proteins:hasTestRole
+
+    Annotations: 
+        pattern:inpattern _:genid1,
+        <http://www.purl.org/ontolink/tawny#name> "hasTestRole"@en
+    
+    Characteristics: 
+        Functional
+    
+    Domain: 
+        final-year-proteins:Protein
+    
+    Range: 
+        final-year-proteins:TestRole
+    
+    
+Class: final-year-proteins:CBH1
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "CBH1"@en,
+        rdfs:label "Kinetochore protein CBH1, CENP-B homolog"@en,
+        rdfs:label "https://www.pombase.org/gene/SPAC9E9.10c"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:CENP-A
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "CENP-A"@en,
+        rdfs:label "Centromere-specific histone H3 CENP-A"@en,
+        rdfs:label "https://www.pombase.org/gene/SPBC1105.17"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein,
+        final-year-proteins:binds some final-year-proteins:NDC-80
+    
+    
+Class: final-year-proteins:CNP3
+
+    Annotations: 
+        rdfs:label "https://www.pombase.org/gene/SPBC1861.01c"@en,
+        <http://www.purl.org/ontolink/tawny#name> "CNP3"@en,
+        rdfs:label "Kinetochore protein CNP3, CENP-C ortholog"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:CellCycleStage
+
+    Annotations: 
+        pattern:inpattern _:genid3,
+        <http://www.purl.org/ontolink/tawny#name> "CellCycleStage"@en,
+        rdfs:comment "What stage of the Cell Cycle they bind"@en
+    
+    EquivalentTo: 
+        final-year-proteins:G1 or final-year-proteins:G2 or final-year-proteins:Mitotic or final-year-proteins:S
+    
+    SubClassOf: 
+        final-year-proteins:ProteinProperty
+    
+    
+Class: final-year-proteins:CentromericDNABinding
+
+    Annotations: 
+        pattern:facetvalue <http://example.com/final-year-proteins#hasDNABinding>,
+        pattern:inpattern _:genid2,
+        <http://www.purl.org/ontolink/tawny#name> "CentromericDNABinding"@en
+    
+    SubClassOf: 
+        final-year-proteins:DNABinding
+    
+    DisjointWith: 
+        final-year-proteins:DoubleStrandedDNABinding
+    
+    
+Class: final-year-proteins:DNABinding
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "DNABinding"@en,
+        pattern:inpattern _:genid2
+    
+    
+Class: final-year-proteins:DNABindingRole
+
+    Annotations: 
+        pattern:inpattern _:genid1,
+        <http://www.purl.org/ontolink/tawny#name> "DNABindingRole"@en,
+        pattern:facetvalue <http://example.com/final-year-proteins#hasTestRole>
+    
+    SubClassOf: 
+        final-year-proteins:TestRole
+    
+    DisjointWith: 
+        final-year-proteins:ProteinBindingRole
+    
+    
+Class: final-year-proteins:DoubleStrandedDNABinding
+
+    Annotations: 
+        pattern:inpattern _:genid2,
+        <http://www.purl.org/ontolink/tawny#name> "DoubleStrandedDNABinding"@en,
+        pattern:facetvalue <http://example.com/final-year-proteins#hasDNABinding>
+    
+    SubClassOf: 
+        final-year-proteins:DNABinding
+    
+    DisjointWith: 
+        final-year-proteins:CentromericDNABinding
+    
+    
+Class: final-year-proteins:Essential
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Essential"@en,
+        pattern:inpattern _:genid4,
+        pattern:facetvalue <http://example.com/final-year-proteins#hasEssentialness>
+    
+    SubClassOf: 
+        final-year-proteins:Essentialness
+    
+    DisjointWith: 
+        final-year-proteins:NonEssential
+    
+    
+Class: final-year-proteins:Essentialness
+
+    Annotations: 
+        pattern:inpattern _:genid4,
+        <http://www.purl.org/ontolink/tawny#name> "Essentialness"@en
+    
+    EquivalentTo: 
+        final-year-proteins:Essential or final-year-proteins:NonEssential
+    
+    SubClassOf: 
+        final-year-proteins:ProteinProperty
+    
+    
+Class: final-year-proteins:FTA1
+
+    Annotations: 
+        rdfs:label "https://www.pombase.org/gene/SPAC4F10.12"@en,
+        rdfs:label "Kinetochore protein FTA1, CENP-L ortholog"@en,
+        <http://www.purl.org/ontolink/tawny#name> "FTA1"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:G1
+
+    Annotations: 
+        pattern:facetvalue <http://example.com/final-year-proteins#hasCellCycleStage>,
+        rdfs:comment "What stage of the Cell Cycle they bind"@en,
+        pattern:inpattern _:genid3,
+        <http://www.purl.org/ontolink/tawny#name> "G1"@en
+    
+    SubClassOf: 
+        final-year-proteins:CellCycleStage
+    
+    
+Class: final-year-proteins:G2
+
+    Annotations: 
+        rdfs:comment "What stage of the Cell Cycle they bind"@en,
+        pattern:inpattern _:genid3,
+        <http://www.purl.org/ontolink/tawny#name> "G2"@en,
+        pattern:facetvalue <http://example.com/final-year-proteins#hasCellCycleStage>
+    
+    SubClassOf: 
+        final-year-proteins:CellCycleStage
+    
+    
+Class: final-year-proteins:MAL2
+
+    Annotations: 
+        rdfs:label "Kinetochore protein MAL2, CENP-O ortholog"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MAL2"@en,
+        rdfs:label "https://www.pombase.org/gene/SPAC25B8.14"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MHF1
+
+    Annotations: 
+        rdfs:label "Kinetochore protein MHF1, CENP-S ortholog"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MHF1"@en,
+        rdfs:label "https://www.pombase.org/gene/SPBC2D10.16"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MHF2
+
+    Annotations: 
+        rdfs:label "https://www.pombase.org/gene/SPCC576.12c"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MHF2"@en,
+        rdfs:label "Kinetochore protein MHF2, CENP-X ortholog"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MIS-12
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "MIS-12"@en,
+        rdfs:label "https://www.pombase.org/gene/SPBC409.04c"@en,
+        rdfs:label "NMS complex subunit MIS12"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MIS-14
+
+    Annotations: 
+        rdfs:label "NMS complex subunit MIS14"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MIS-14"@en,
+        rdfs:label "https://www.pombase.org/gene/SPAC688.02c"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MIS-18
+
+    Annotations: 
+        rdfs:label "Kinetochore protein MIS18"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MIS-18"@en,
+        rdfs:label "https://www.pombase.org/gene/SPCC970.12"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MIS15
+
+    Annotations: 
+        rdfs:label "https://www.pombase.org/gene/SPBP22H7.09c"@en,
+        rdfs:label "Kinetochore protein MIS15, CENP-N ortholog"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MIS15"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MIS16
+
+    Annotations: 
+        rdfs:label "https://www.pombase.org/gene/SPCC1672.10"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MIS16"@en,
+        rdfs:label "Kinetochore protein MIS16"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MIS17
+
+    Annotations: 
+        rdfs:label "Kinetochore protein MIS17, CENP-U ortholog"@en,
+        rdfs:label "https://www.pombase.org/gene/SPBC21.01"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MIS17"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MIS18
+
+    Annotations: 
+        rdfs:label "https://www.pombase.org/gene/SPCC970.12"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MIS18"@en,
+        rdfs:label "Kinetochore protein MIS18"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:MIS6
+
+    Annotations: 
+        rdfs:label "https://www.pombase.org/gene/SPAC1687.20c"@en,
+        rdfs:label "Kinetochore protein MIS6, CENP-I ortholog"@en,
+        <http://www.purl.org/ontolink/tawny#name> "MIS6"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:Mitotic
+
+    Annotations: 
+        rdfs:comment "What stage of the Cell Cycle they bind"@en,
+        pattern:inpattern _:genid3,
+        pattern:facetvalue <http://example.com/final-year-proteins#hasCellCycleStage>,
+        <http://www.purl.org/ontolink/tawny#name> "Mitotic"@en
+    
+    SubClassOf: 
+        final-year-proteins:CellCycleStage
+    
+    
+Class: final-year-proteins:NDC-80
+
+    Annotations: 
+        rdfs:label "https://www.pombase.org/gene/SPBC11C11.03"@en,
+        rdfs:label "NMS complex subunit NDC80"@en,
+        <http://www.purl.org/ontolink/tawny#name> "NDC-80"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:NNF-1
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "NNF-1"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:NSK-1
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "NSK-1"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:NUF-2
+
+    Annotations: 
+        rdfs:label "NMS complex subunit NUF2"@en,
+        <http://www.purl.org/ontolink/tawny#name> "NUF-2"@en,
+        rdfs:label "https://www.pombase.org/gene/SPAC27F1.04c"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:NonEssential
+
+    Annotations: 
+        pattern:inpattern _:genid4,
+        <http://www.purl.org/ontolink/tawny#name> "NonEssential"@en,
+        pattern:facetvalue <http://example.com/final-year-proteins#hasEssentialness>
+    
+    SubClassOf: 
+        final-year-proteins:Essentialness
+    
+    DisjointWith: 
+        final-year-proteins:Essential
+    
+    
+Class: final-year-proteins:Protein
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "Protein"@en
+    
+    SubClassOf: 
+        final-year-proteins:hasRole some final-year-proteins:TestRole
+    
+    
+Class: final-year-proteins:ProteinBindingRole
+
+    Annotations: 
+        pattern:inpattern _:genid1,
+        <http://www.purl.org/ontolink/tawny#name> "ProteinBindingRole"@en,
+        pattern:facetvalue <http://example.com/final-year-proteins#hasTestRole>
+    
+    SubClassOf: 
+        final-year-proteins:TestRole
+    
+    DisjointWith: 
+        final-year-proteins:DNABindingRole
+    
+    
+Class: final-year-proteins:ProteinProperty
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "ProteinProperty"@en
+    
+    
+Class: final-year-proteins:S
+
+    Annotations: 
+        pattern:facetvalue <http://example.com/final-year-proteins#hasCellCycleStage>,
+        <http://www.purl.org/ontolink/tawny#name> "S"@en,
+        rdfs:comment "What stage of the Cell Cycle they bind"@en,
+        pattern:inpattern _:genid3
+    
+    SubClassOf: 
+        final-year-proteins:CellCycleStage
+    
+    
+Class: final-year-proteins:SIM4
+
+    Annotations: 
+        rdfs:label "Kinetochore protein SIM4, CENP-K ortholog"@en,
+        <http://www.purl.org/ontolink/tawny#name> "SIM4"@en,
+        rdfs:label "https://www.pombase.org/gene/SPBC18E5.03c"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:SOS-7
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SOS-7"@en,
+        rdfs:label "https://www.pombase.org/gene/SPAPB17E12.06"@en,
+        rdfs:label "NMS complex subunit SOS7"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:SPC-24
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SPC-24"@en,
+        rdfs:label "NMS complex subunit SPC24"@en,
+        rdfs:label "https://www.pombase.org/gene/SPBC336.08"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:SPC-25
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SPC-25"@en,
+        rdfs:label "https://www.pombase.org/gene/SPCC188.04c"@en,
+        rdfs:label "NMS complex subunit SPC25"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:SPC-7
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "SPC-7"@en,
+        rdfs:label "NMS complex subunit SPC7"@en,
+        rdfs:label "https://www.pombase.org/gene/SPCC1020.02"@en
+    
+    SubClassOf: 
+        final-year-proteins:Protein
+    
+    
+Class: final-year-proteins:TestRole
+
+    Annotations: 
+        <http://www.purl.org/ontolink/tawny#name> "TestRole"@en,
+        pattern:inpattern _:genid1
+    
+    
+Individual: _:genid1
+
+    
+Individual: _:genid2
+
+    
+Individual: _:genid3
+
+    
+Individual: _:genid4
+
+    
+DisjointClasses: 
+    final-year-proteins:CBH1,final-year-proteins:CNP3,final-year-proteins:FTA1,final-year-proteins:MAL2,final-year-proteins:MHF1,final-year-proteins:MHF2,final-year-proteins:MIS15,final-year-proteins:MIS16,final-year-proteins:MIS17,final-year-proteins:MIS18,final-year-proteins:MIS6,final-year-proteins:SIM4
+
+DisjointClasses: 
+    final-year-proteins:CENP-A,final-year-proteins:MIS-12,final-year-proteins:MIS-14,final-year-proteins:MIS-18,final-year-proteins:NDC-80,final-year-proteins:NNF-1,final-year-proteins:NSK-1,final-year-proteins:NUF-2,final-year-proteins:SOS-7,final-year-proteins:SPC-24,final-year-proteins:SPC-25,final-year-proteins:SPC-7
+
+DisjointClasses: 
+    final-year-proteins:G1,final-year-proteins:G2,final-year-proteins:Mitotic,final-year-proteins:S
+
