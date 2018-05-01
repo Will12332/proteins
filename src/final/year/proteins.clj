@@ -55,9 +55,67 @@
 
 (defoproperty binds)
 
-(owl-class CENP-A
+(owl-class MHF1
+  :comment ""
   :super
-  (owl-some binds NDC-80))
+  (owl-some binds MHF2))
+
+(owl-class MHF2
+  :comment ""
+  :super
+  (owl-some binds MHF1))
+
+(owl-class CNP3
+  :comment ""
+  :super
+  (owl-some binds FTA1))
+
+(owl-class FTA1
+  :comment ""
+  :super
+  (owl-some binds CNP3))
+
+(owl-class MIS6
+  :comment ""
+  :super
+  (owl-some binds MIS15)
+  (owl-some binds MIS16))
+
+
+(owl-class MIS6
+  :comment ""
+  :super
+  (owl-some binds SIM4))
+
+(owl-class MIS15
+  :comment ""
+  :super
+  (owl-some binds MIS6)
+  (owl-some binds MIS17))
+
+(owl-class MIS16
+  :comment ""
+  :super
+  (owl-some binds MIS18))
+
+(owl-class MIS17
+  :comment ""
+  :super
+  (owl-some binds MIS6)
+  (owl-some binds MIS15))
+
+(owl-class MIS18
+  :comment ""
+  :super
+  (owl-some binds MIS16))
+
+(owl-class SIM4
+  :comment ""
+  :super
+  (owl-some binds MIS6))
+
+
+
 
 
 (defclass TestRole)
