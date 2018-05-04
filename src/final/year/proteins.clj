@@ -190,12 +190,6 @@
 
 (defclass ProteinProperty)
 
-(p/defpartition CellCycleStage
-  [G1 S G2 Mitotic]
-  :comment "What stage of the Cell Cycle they bind"
-  :super ProteinProperty
-  :domain Protein)
-
 (p/defpartition ResidueLength
   [Small Medium Large]
   :comment "The number of Amino Acid residues"

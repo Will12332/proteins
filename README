@@ -1,1 +1,3 @@
 This is the repository for my final year project, building a ontological model of a tractable biological system, that of the Schizosacchoromyces Pombe Fission Yeast.
+
+This model is of proteins, with Tawny-OWL statements about their properties, roles and relationships within the organism.
